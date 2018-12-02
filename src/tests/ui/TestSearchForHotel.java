@@ -13,7 +13,6 @@ import core.Browser;
 
 public class TestSearchForHotel {
 
-
 	private String expectedName = "Sofia";
 	private String checkInDate = "11.11.2019";
 	private String checkOutDate = "12.11.2019";

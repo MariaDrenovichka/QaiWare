@@ -18,7 +18,6 @@ public class TestLogInOut {
 	private String invalidPass = "credentials";
 	private String errorMessageXpath = "//*[contains(text(), 'Invalid Email or Password')]";
 
-	
 	@Before
 	public void setUp() {
 		Browser.start();
@@ -36,7 +35,8 @@ public class TestLogInOut {
 	public void unsuccesfullLogin() {
 		BaseMethods.goTo();
 		LogInOut.login(invalidEmail, invalidPass);
-		Assert.assertEquals("Invalid Email or Password", Browser.driver.findElement(By.xpath(errorMessageXpath)).getText());
+		Assert.assertEquals("Invalid Email or Password",
+				Browser.driver.findElement(By.xpath(errorMessageXpath)).getText());
 	}
 
 	@Test

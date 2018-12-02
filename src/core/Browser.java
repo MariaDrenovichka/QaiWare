@@ -9,13 +9,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class Browser {
-	
-public static WebDriver driver;
-	
+
+	public static WebDriver driver;
+
 	public static void start() {
-	    System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver/chromedriver");
-	    ChromeOptions options =new ChromeOptions();
-	    options.addArguments("--start-maximized");
+		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver/chromedriver");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--start-maximized");
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}

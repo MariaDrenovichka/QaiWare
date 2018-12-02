@@ -9,20 +9,19 @@ import org.openqa.selenium.interactions.Actions;
 import core.BaseMethods;
 
 public class SearchForHotel {
-	
+
 	public static String validUserName = "user@phptravels.com";
 	public static String validPass = "demouser";
 	private static String submitButton = "//*[@type='submit']";
 	private static String searchResultMatches = "//*[@class='select2-result-sub']";
 	private static String searchCriteria = "span.select2-chosen";
 
-
-	public static void navigateToHotelsPage(){
-	BaseMethods.goTo();
-	LogInOut.login(validUserName, validPass);
-	BaseMethods.waitExplicit();
-	Browser.driver.findElement(By.xpath("//*[@class='hidden-xs']")).click();
-	BaseMethods.waitForElement();
+	public static void navigateToHotelsPage() {
+		BaseMethods.goTo();
+		LogInOut.login(validUserName, validPass);
+		BaseMethods.waitExplicit();
+		Browser.driver.findElement(By.xpath("//*[@class='hidden-xs']")).click();
+		BaseMethods.waitForElement();
 	}
 
 	public static void searchHotelName(String name) {
