@@ -10,9 +10,6 @@ public class LogInOut {
 	private static String logOutSelector = "//*[contains(text(), 'Logout')]";
 	private static String loginBigButtonSelector = "button.btn.btn-action.btn-lg.btn-block.loginbtn";
 
-	public static void goTo() {
-		Browser.driver.get("https://www.phptravels.net");
-	}
 
 	public static void login(String email, String password) {
 		BaseMethods.navigateToLogin();

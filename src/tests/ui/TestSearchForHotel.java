@@ -8,16 +8,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import core.SearchForHotel;
+import core.BaseMethods;
 import core.Browser;
 
 public class TestSearchForHotel {
 
 
-	private final String expectedName = "Sofia";
-	private final String checkInDate = "11.11.2019";
-	private final String checkOutDate = "12.11.2019";
-	private final String filterSearchLocator = "//*[@class='go-right ellipsisFIX go-text-right mob-fs14']";
-	private final String dateInThePast = "11.11.2011";
+	private String expectedName = "Sofia";
+	private String checkInDate = "11.11.2019";
+	private String checkOutDate = "12.11.2019";
+	private String filterSearchLocator = "//*[@class='go-right ellipsisFIX go-text-right mob-fs14']";
+	private String dateInThePast = "11.11.2011";
 
 	@Before
 	public void setUp() {
@@ -26,18 +27,18 @@ public class TestSearchForHotel {
 
 	@Test
 	public void searchHotelsByDestinationWithCorrectData() {
-		SearchForHotel.navigateToHotelsPage();
-		SearchForHotel.searchHotelName(this.expectedName);
+		BaseMethods.goTo();
+		SearchForHotel.searchHotelName(expectedName);
 		SearchForHotel.checkInDate(checkInDate);
 		SearchForHotel.checkOutDate(checkOutDate);
 		SearchForHotel.submitSeachCriteria();
-		String name = Browser.driver.findElement(By.xpath(filterSearchLocator)).getText();
-		Assert.assertEquals(this.expectedName, name);
+		String firstListedDestination = Browser.driver.findElement(By.xpath(filterSearchLocator)).getText();
+		Assert.assertEquals(expectedName, firstListedDestination);
 	}
 
 	@Test
-	public void searhHotelsByDestinationWithInCorrectData() {
-		SearchForHotel.navigateToHotelsPage();
+	public void searhHotelsByDestinationWithIncorrectData() {
+		BaseMethods.goTo();
 		SearchForHotel.searchHotelName(expectedName);
 		SearchForHotel.checkInDate(checkInDate);
 		SearchForHotel.checkOutDate(dateInThePast);

@@ -18,7 +18,7 @@ public class SearchForHotel {
 
 
 	public static void navigateToHotelsPage(){
-	LogInOut.goTo();
+	BaseMethods.goTo();
 	LogInOut.login(validUserName, validPass);
 	BaseMethods.waitExplicit();
 	Browser.driver.findElement(By.xpath("//*[@class='hidden-xs']")).click();

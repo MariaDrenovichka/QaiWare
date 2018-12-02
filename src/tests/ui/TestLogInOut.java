@@ -12,12 +12,13 @@ import core.LogInOut;
 import core.BaseMethods;
 
 public class TestLogInOut {
-	private final String validEmail = "user";
-	private final String validPass = "pass";
-	private final String invalidEmail = "invalid@email.com";
-	private final String invalidPass = "credentials";
-	private final String errorMessageXpath = "//*[contains(text(), 'Invalid Email or Password')]";
+	private String validEmail = "user@phptravels.com";
+	private String validPass = "demouser";
+	private String invalidEmail = "invalid@email.com";
+	private String invalidPass = "credentials";
+	private String errorMessageXpath = "//*[contains(text(), 'Invalid Email or Password')]";
 
+	
 	@Before
 	public void setUp() {
 		Browser.start();
@@ -25,7 +26,7 @@ public class TestLogInOut {
 
 	@Test
 	public void successfulLogin() {
-		LogInOut.goTo();
+		BaseMethods.goTo();
 		LogInOut.login(validEmail, validPass);
 		BaseMethods.waitExplicit();
 		Assert.assertEquals("My Account", Browser.driver.getTitle());
@@ -33,14 +34,14 @@ public class TestLogInOut {
 
 	@Test
 	public void unsuccesfullLogin() {
-		LogInOut.goTo();
+		BaseMethods.goTo();
 		LogInOut.login(invalidEmail, invalidPass);
 		Assert.assertEquals("Invalid Email or Password", Browser.driver.findElement(By.xpath(errorMessageXpath)).getText());
 	}
 
 	@Test
 	public void successfulLogout() {
-		LogInOut.goTo();
+		BaseMethods.goTo();
 		LogInOut.login(validEmail, validPass);
 		LogInOut.logout();
 		Assert.assertEquals("Login", Browser.driver.getTitle());
@@ -48,7 +49,7 @@ public class TestLogInOut {
 
 	@Test
 	public void rememberCheckboxNotCheckedByDefauld() {
-		LogInOut.goTo();
+		BaseMethods.goTo();
 		BaseMethods.navigateToLogin();
 		WebElement checkBox = Browser.driver.findElement(By.id("remember-me"));
 		Assert.assertFalse(checkBox.isSelected());
@@ -56,7 +57,7 @@ public class TestLogInOut {
 
 	@Test
 	public void rememberCredentialsCanBeChecked() {
-		LogInOut.goTo();
+		BaseMethods.goTo();
 		LogInOut.login(invalidEmail, invalidPass);
 		LogInOut.checkRememberBox();
 		WebElement rememberMeCheckBox = Browser.driver.findElement(By.id("remember-me"));

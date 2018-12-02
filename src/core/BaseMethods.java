@@ -10,6 +10,11 @@ public class BaseMethods {
 	
 	private static String loginIconSelector = "#li_myaccount > ul > li:nth-child(1) > a";
 	
+
+	public static void goTo() {
+		Browser.driver.get("https://www.phptravels.net");
+	}
+	
 	public static void clickHiddenElement(WebElement element){
 		JavascriptExecutor js = (JavascriptExecutor) Browser.driver; 
 		js.executeScript("arguments[0].click();", element);
@@ -19,7 +24,7 @@ public class BaseMethods {
 //		Scanner sc = new Scanner(System.in);
 //		int i = sc.nextInt();
 //	}
-	
+		
 	public static void navigateToLogin(){
 	   	WebElement loginButton = Browser.driver.findElements(By.cssSelector(loginIconSelector)).get(0);
     	clickHiddenElement(loginButton);

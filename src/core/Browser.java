@@ -15,7 +15,7 @@ public static WebDriver driver;
 	public static void start() {
 	    System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver/chromedriver");
 	    ChromeOptions options =new ChromeOptions();
-	    options.addArguments("--start-maximized", "--disable-extentions");
+	    options.addArguments("--start-maximized");
 		driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
