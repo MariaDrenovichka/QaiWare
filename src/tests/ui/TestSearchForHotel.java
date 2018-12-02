@@ -13,11 +13,11 @@ import core.Browser;
 public class TestSearchForHotel {
 
 
-	private String expectedName = "Sofia";
-	private String checkInDate = "11.11.2019";
-	private String checkOutDate = "12.11.2019";
-	private String filterSearchLocator = "//*[@class='go-right ellipsisFIX go-text-right mob-fs14']";
-	private String dateInThePast = "11.11.2011";
+	private final String expectedName = "Sofia";
+	private final String checkInDate = "11.11.2019";
+	private final String checkOutDate = "12.11.2019";
+	private final String filterSearchLocator = "//*[@class='go-right ellipsisFIX go-text-right mob-fs14']";
+	private final String dateInThePast = "11.11.2011";
 
 	@Before
 	public void setUp() {

@@ -12,12 +12,11 @@ import core.LogInOut;
 import core.BaseMethods;
 
 public class TestLogInOut {
-	public String validUserName = "user";
-	public String validPass = "pass";
-	private String invalidEmail = "invalid@email.com";
-	private String invalidPass = "credentials";
-	// private String partialEmail = "user";
-	private String errorMessage = "//*[contains(text(), 'Invalid Email or Password')]";
+	private final String validEmail = "user";
+	private final String validPass = "pass";
+	private final String invalidEmail = "invalid@email.com";
+	private final String invalidPass = "credentials";
+	private final String errorMessageXpath = "//*[contains(text(), 'Invalid Email or Password')]";
 
 	@Before
 	public void setUp() {
@@ -27,7 +26,7 @@ public class TestLogInOut {
 	@Test
 	public void successfulLogin() {
 		LogInOut.goTo();
-		LogInOut.login(validUserName, validPass);
+		LogInOut.login(validEmail, validPass);
 		BaseMethods.waitExplicit();
 		Assert.assertEquals("My Account", Browser.driver.getTitle());
 	}
@@ -36,13 +35,13 @@ public class TestLogInOut {
 	public void unsuccesfullLogin() {
 		LogInOut.goTo();
 		LogInOut.login(invalidEmail, invalidPass);
-		Assert.assertEquals("Invalid Email or Password", Browser.driver.findElement(By.xpath(errorMessage)).getText());
+		Assert.assertEquals("Invalid Email or Password", Browser.driver.findElement(By.xpath(errorMessageXpath)).getText());
 	}
 
 	@Test
 	public void successfulLogout() {
 		LogInOut.goTo();
-		LogInOut.login(validUserName, validPass);
+		LogInOut.login(validEmail, validPass);
 		LogInOut.logout();
 		Assert.assertEquals("Login", Browser.driver.getTitle());
 	}
@@ -51,7 +50,6 @@ public class TestLogInOut {
 	public void rememberCheckboxNotCheckedByDefauld() {
 		LogInOut.goTo();
 		BaseMethods.navigateToLogin();
-//		Browser.waitForMe();
 		WebElement checkBox = Browser.driver.findElement(By.id("remember-me"));
 		Assert.assertFalse(checkBox.isSelected());
 	}
